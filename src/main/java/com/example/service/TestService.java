@@ -13,7 +13,7 @@ public class TestService {
 	@Autowired
 	public RestTemplate restTemplate;
 	
-    private static final String CHECK_URL = "http://192.168.0.11:8080/webApiReceive/judge";
+    private static final String CHECK_URL = "http://192.168.0.11:8080/webApiProcess/judge";
 
     public Receive check(Send send) {
     	return restTemplate.postForObject(CHECK_URL, send, Receive.class);

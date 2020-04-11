@@ -33,6 +33,7 @@ public class TestContoller {
 		send.setName("とがみん");
 		send.setType("human");
 		System.out.println("API連携スタート");
+		System.out.println("URL名確認");
 		Receive receive = testService.check(send);
 		System.out.println("API連携ゴール");
 		System.out.println(receive.toString());
