@@ -6,8 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 
-import com.example.domain.Receive;
-import com.example.domain.Send;
+import com.example.domain.Credit;
+import com.example.domain.CreditResult;
 import com.example.service.TestService;
 
 @Controller
@@ -26,17 +26,26 @@ public class TestContoller {
 	public String toStart() {
 		return "start";
 	}
-
+	
 	@RequestMapping("/to-send")
-	public String toSend() {
-		Send send = new Send();
-		send.setName("とがみん");
-		send.setType("human");
+	public String toSend(Credit credit) {
+		System.out.println("------------------");
 		System.out.println("API連携スタート");
-		System.out.println("URL名確認");
-		Receive receive = testService.check(send);
+		
+		//■ APIチェック
+		CreditResult creditResult = testService.payment(credit);	
+//		CreditResult creditResult = testService.cancel(credit);	
 		System.out.println("API連携ゴール");
-		System.out.println(receive.toString());
+		
+		System.out.println("creditResult");
+		System.out.println(creditResult.getMessage());
+		String message = creditResult.getMessage();
+		
+		if ("OK.".equals(message)) {
+			System.out.println("うまくいってる");
+		}else {
+			System.out.println("うまくいってない");
+		}
 		return "finish";
 	}
 }

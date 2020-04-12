@@ -5,7 +5,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form th:action="@{/to-send}" method="post">
+<!-- 	<form th:action="@{/to-send}" method="post">
+		<input type="text" name="order_number">
+		<button type="submit">開始</button>
+	</form>-->
+ 	<form th:action="@{/to-send}" method="post">
+		card_exp_year:<input type="text" name="card_exp_year"><br>
+		card_exp_month:<input type="text" name="card_exp_month"><br>
+		card_cvv:<input type="text" name="card_cvv">
 		<button type="submit">開始</button>
 	</form>
 </body>
